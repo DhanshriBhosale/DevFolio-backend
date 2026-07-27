@@ -15,7 +15,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/upload")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {
+    "http://localhost:5173",
+    "https://dev-folio-y8wt.vercel.app"
+})
 public class ImageUploadController {
 
     private static final String UPLOAD_DIR = "uploads/";
@@ -40,7 +43,7 @@ public class ImageUploadController {
         Files.copy(file.getInputStream(), uploadPath);
 
         return ResponseEntity.ok(
-                "http://localhost:8080/uploads/" + filename
+                "https://devfolio-backend-production-0511.up.railway.app/uploads/" + filename
         );
     }
 }
