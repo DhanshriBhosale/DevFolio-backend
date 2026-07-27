@@ -1,4 +1,4 @@
-import com.devfolio.backend.entity.ContactRequest;
+package com.devfolio.backend.entity;
 
 public class ContactRequest {
 
