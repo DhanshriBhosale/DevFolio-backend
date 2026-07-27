@@ -45,13 +45,12 @@ public class EmailController {
 
             return "Message Sent Successfully";
 
-        } catch (Exception e) {
+        }catch (Exception e) {
 
-            e.printStackTrace();
+    e.printStackTrace();
 
-            return "Failed to Send Message";
-        }
-
+    return e.getMessage();
+}
     }
 
 }
