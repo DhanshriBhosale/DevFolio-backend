@@ -15,11 +15,19 @@ public class Certificate {
     private String title;
     private String issuer;
     private String year;
+
+    // Preview Image
     private String image;
+
+    // PDF Link
     private String certificateLink;
 
     public Certificate() {
     }
+
+    // ==========================
+    // Getters & Setters
+    // ==========================
 
     public Long getId() {
         return id;
@@ -53,6 +61,22 @@ public class Certificate {
         this.year = year;
     }
 
+    // ==========================
+    // Image
+    // ==========================
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    // ==========================
+    // Certificate PDF
+    // ==========================
+
     public String getCertificateLink() {
         return certificateLink;
     }
@@ -60,4 +84,5 @@ public class Certificate {
     public void setCertificateLink(String certificateLink) {
         this.certificateLink = certificateLink;
     }
+
 }
