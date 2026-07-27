@@ -1,17 +1,15 @@
 package com.devfolio.backend.controller;
 
-import com.devfolio.backend.entity.ContactRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
 
+import com.devfolio.backend.dto.ContactRequest;
+
 @RestController
 @RequestMapping("/api/email")
-@CrossOrigin(origins = {
-        "http://localhost:5173",
-        "https://dev-folio-y8wt.vercel.app"
-})
+@CrossOrigin(origins = "*")
 public class EmailController {
 
     @Autowired
@@ -20,23 +18,40 @@ public class EmailController {
     @PostMapping("/send")
     public String sendEmail(@RequestBody ContactRequest request) {
 
-        SimpleMailMessage message = new SimpleMailMessage();
+        try {
 
-        // Your Gmail
-        message.setTo("dhanshribhosale11@gmail.com");
+            SimpleMailMessage message = new SimpleMailMessage();
 
-        message.setSubject("New Portfolio Contact : " + request.getSubject());
+            // Receiver
+            message.setTo("dhanshribhosale11@gmail.com");
 
-        message.setText(
-                "Name : " + request.getName()
-                        + "\n\nEmail : " + request.getEmail()
-                        + "\n\nSubject : " + request.getSubject()
-                        + "\n\nMessage :\n\n"
-                        + request.getMessage()
-        );
+            // Sender email (visitor)
+            message.setReplyTo(request.getEmail());
 
-        mailSender.send(message);
+            // Subject
+            message.setSubject("Portfolio Contact : " + request.getSubject());
 
-        return "Message Sent Successfully";
+            // Body
+            message.setText(
+                    "New Portfolio Contact Request\n\n"
+                    + "Name : " + request.getName() + "\n\n"
+                    + "Email : " + request.getEmail() + "\n\n"
+                    + "Subject : " + request.getSubject() + "\n\n"
+                    + "Message :\n"
+                    + request.getMessage()
+            );
+
+            mailSender.send(message);
+
+            return "Message Sent Successfully";
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return "Failed to Send Message";
+        }
+
     }
+
 }
