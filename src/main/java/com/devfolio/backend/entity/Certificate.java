@@ -15,6 +15,7 @@ public class Certificate {
     private String title;
     private String issuer;
     private String year;
+    private String image;
     private String certificateLink;
 
     public Certificate() {
