@@ -43,7 +43,7 @@ public class ImageUploadController {
         Files.copy(file.getInputStream(), uploadPath);
 
         return ResponseEntity.ok(
-                "https://devfolio-backend-production-0511.up.railway.app/uploads/" + filename
+                "https://devfolio-backend-production-6da2.up.railway.app/uploads/" + filename
         );
     }
 }
