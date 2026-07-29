@@ -16,7 +16,6 @@ public class About {
     private String name;
     private String profession;
     private String email;
-    private String phone;
     private String location;
 
     @Column(length = 3000)
@@ -57,13 +56,9 @@ public class About {
         this.email = email;
     }
 
-    public String getPhone() {
-        return phone;
-    }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+
+    
 
     public String getLocation() {
         return location;
