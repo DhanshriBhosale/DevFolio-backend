@@ -16,8 +16,6 @@ public class Certificate {
     private String issuer;
     private String year;
 
-    // Preview Image
-    private String image;
 
     // PDF Link
     private String certificateLink;
@@ -61,17 +59,7 @@ public class Certificate {
         this.year = year;
     }
 
-    // ==========================
-    // Image
-    // ==========================
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
+    
 
     // ==========================
     // Certificate PDF
